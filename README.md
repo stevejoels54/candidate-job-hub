@@ -54,7 +54,3 @@ For any questions or issues, please open an issue on GitHub or contact the repos
 ---
 
 Thank you for checking out Candidate Job Hub!
-
-```
-
-```
