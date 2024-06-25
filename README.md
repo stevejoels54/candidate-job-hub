@@ -28,7 +28,7 @@ To get started with the Candidate Job Hub monorepo, clone the repository and fol
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/candidate-job-hub.git
+git clone https://github.com/stevejoels54/candidate-job-hub.git
 cd candidate-job-hub
 ```
 
