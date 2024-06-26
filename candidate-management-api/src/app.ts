@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import candidateRoutes from "./routes/candidateRoutes";
-import db from "./database";
+import connectDB from "./config/database";
 import redisClient from "./utils/redisClient";
 import logger from "./config/winston";
 import dotenv from "dotenv";
@@ -21,17 +21,16 @@ app.get("*", (req, res) =>
   res.status(404).send({ message: "Resource Not Found!" })
 );
 
-app.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT}`);
-});
-
-// check if the database is connected
-db.sync()
+// connect to the database
+connectDB()
   .then(() => {
-    logger.info("Database connected successfully");
+    app.listen(PORT, () => {
+      logger.info(`Server running on port ${PORT}`);
+    });
   })
-  .catch((err) => {
-    logger.error("Error connecting to the database: ", err);
+  .catch((error) => {
+    logger.error("Error connecting to the database: ", error);
+    process.exit(1);
   });
 
 // check if the redis client is connected
