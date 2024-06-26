@@ -17,7 +17,7 @@ export const candidateSchema = Joi.object({
     "string.email": "Please provide a valid email address",
     "any.required": "Email is required",
   }),
-  callTime: Joi.string().optional().messages({
+  callInterval: Joi.string().optional().messages({
     "string.empty": "Call time cannot be empty",
   }),
   linkedin: Joi.string().uri().optional().messages({
