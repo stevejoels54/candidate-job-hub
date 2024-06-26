@@ -38,3 +38,7 @@ public
 *.sublime-project
 *.sublime-workspace
 sftp-config.json
+
+# build output
+dist/
+build/
