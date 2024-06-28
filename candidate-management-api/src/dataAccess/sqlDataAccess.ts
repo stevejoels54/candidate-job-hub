@@ -20,7 +20,9 @@ class SqlDataAccess {
 
   // function to get all candidates
   async getAllCandidates(): Promise<ICandidate[]> {
-    return await Candidate.findAll();
+    return await Candidate.findAll({
+      order: [["createdAt", "DESC"]],
+    });
   }
 
   // function to delete a candidate by email and return nothing
