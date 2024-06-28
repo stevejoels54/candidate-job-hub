@@ -44,7 +44,9 @@ const AppLayout: React.FC<IAppLayoutProps> = ({
             icon={<FaBriefcase />}
             style={{ marginRight: 16, backgroundColor: colorPrimary }}
           />
-          <h2 style={{ textAlign: "center" }}>Candidate Job Hub</h2>
+          <h2 className="nav-title" style={{ textAlign: "center" }}>
+            Candidate Job Hub
+          </h2>
         </div>
       </Header>
       <Content style={{ padding: "0 24px", paddingTop: "24px" }}>
