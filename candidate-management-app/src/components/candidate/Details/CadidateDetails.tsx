@@ -121,8 +121,7 @@ const CandidateDetails: React.FC = () => {
               <Text strong>Phone:</Text> {candidate.phoneNumber || "N/A"}
             </div>
             <div>
-              <Text strong>Comment:</Text>
-              <div>{candidate.comment || "No comments"}</div>
+              <Text strong>Comment:</Text> {candidate.comment || "No comments"}
             </div>
             <Divider />
             <div>
