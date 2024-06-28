@@ -9,7 +9,7 @@ export const candidateSchema = Joi.object({
     "string.empty": "Last name is required",
     "any.required": "Last name is required",
   }),
-  phoneNumber: Joi.string().optional().messages({
+  phoneNumber: Joi.string().allow("").optional().messages({
     "string.empty": "Phone number cannot be empty",
   }),
   email: Joi.string().email().required().messages({
@@ -17,13 +17,13 @@ export const candidateSchema = Joi.object({
     "string.email": "Please provide a valid email address",
     "any.required": "Email is required",
   }),
-  callInterval: Joi.string().optional().messages({
+  callInterval: Joi.string().allow("").optional().messages({
     "string.empty": "Call time cannot be empty",
   }),
-  linkedin: Joi.string().uri().optional().messages({
+  linkedin: Joi.string().uri().allow("").optional().messages({
     "string.uri": "Please provide a valid LinkedIn profile URL",
   }),
-  github: Joi.string().uri().optional().messages({
+  github: Joi.string().uri().allow("").optional().messages({
     "string.uri": "Please provide a valid GitHub profile URL",
   }),
   comment: Joi.string().required().messages({
