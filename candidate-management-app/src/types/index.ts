@@ -12,28 +12,38 @@ export interface ICandidate {
 }
 
 export interface IError {
-  status: number;
+  status?: number;
+  code?: string;
   message: string;
 }
 
 export interface IState {
-  candidatesLoading: boolean;
-  candidatesSuccess: ICandidate[];
-  candidatesError: IError;
+  candidate: {
+    candidatesLoading: boolean;
+    candidatesSuccess: ICandidate[];
+    candidatesError: IError;
 
-  candidateLoading: boolean;
-  candidateSuccess: ICandidate;
-  candidateError: IError;
+    candidateLoading: boolean;
+    candidateSuccess: ICandidate;
+    candidateError: IError;
 
-  addCandidateLoading: boolean;
-  addCandidateSuccess: ICandidate;
-  addCandidateError: IError;
+    addCandidateLoading: boolean;
+    addCandidateSuccess: ICandidate;
+    addCandidateError: IError;
 
-  updateCandidateLoading: boolean;
-  updateCandidateSuccess: ICandidate;
-  updateCandidateError: IError;
+    updateCandidateLoading: boolean;
+    updateCandidateSuccess: ICandidate;
+    updateCandidateError: IError;
+    updateCandidateData: ICandidate;
 
-  deleteCandidateLoading: boolean;
-  deleteCandidateSuccess: ICandidate;
-  deleteCandidateError: IError;
+    deleteCandidateLoading: boolean;
+    deleteCandidateSuccess: ICandidate;
+    deleteCandidateError: IError;
+  };
+
+  appUi: {
+    addCandidateModalVisible: boolean;
+    updateCandidateModalVisible: boolean;
+    candidateDetailsModalVisible: boolean;
+  };
 }
