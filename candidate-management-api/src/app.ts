@@ -37,3 +37,5 @@ connectDB()
 redisClient.on("connect", () => {
   logger.info("Redis connected successfully");
 });
+
+export default app;
