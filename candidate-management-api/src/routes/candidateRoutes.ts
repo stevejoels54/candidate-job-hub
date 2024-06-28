@@ -12,6 +12,8 @@ const router = Router();
 
 router.post("/", validate(candidateSchema), addOrUpdateCandidate);
 
+router.put("/", validate(candidateSchema), addOrUpdateCandidate);
+
 router.get("/:email", getCandidateByEmail);
 
 router.get("/", getAllCandidates);
