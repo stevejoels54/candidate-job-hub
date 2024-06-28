@@ -15,6 +15,19 @@
   display: block;
 }
 
+.res-table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+/* below large screens res-table should be display none */
+@media (min-width: 991px) {
+  .res-table {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .table-title-container {
     flex-direction: column;

@@ -66,21 +66,70 @@ export const CandidatesTable: React.FC<ITableProps> = ({
   const columns: TableProps<DataType>["columns"] = [
     {
       title: "First Name",
-      dataIndex: "firstName",
       key: "firstName",
-      responsive: ["md"],
+      render: (record: ICandidate) => {
+        return (
+          <div>
+            <span className="res-table">First Name: </span>
+            {record?.firstName}
+            <div className="res-table">
+              Last Name: {record?.lastName}
+              <br />
+              Email: {record?.email}
+              <br />
+              Comment: {record?.comment}
+              <br />
+              {record?.linkedin ? (
+                <a
+                  href={record?.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#0e76a8" }}
+                >
+                  <div>
+                    <FaLinkedin />
+                    <span style={{ marginLeft: 1 }}>LinkedIn</span>
+                  </div>
+                </a>
+              ) : null}
+              {record?.github ? (
+                <a
+                  href={record?.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#333" }}
+                >
+                  <div>
+                    <FaGithub />
+                    <span style={{ marginLeft: 1 }}>Github</span>
+                  </div>
+                </a>
+              ) : null}
+              <TableButtonActions
+                record={record}
+                viewDetails={viewRecordDetails}
+                updateRecord={updateRecord}
+                confirmDelete={confirmDelete}
+                deleteRecord={deleteRecord}
+                deleteId={deleteId}
+                deleteLoading={deleteCandidateLoading}
+              />
+            </div>
+          </div>
+        );
+      },
     },
     {
       title: "Last Name",
       dataIndex: "lastName",
       key: "lastName",
-      responsive: ["md"],
+      responsive: ["lg"],
     },
     {
       title: "Email",
       dataIndex: "email",
       key: "email",
-      responsive: ["md"],
+      responsive: ["lg"],
     },
     {
       title: "Comment",
@@ -94,7 +143,7 @@ export const CandidatesTable: React.FC<ITableProps> = ({
         ) : (
           <span>N/A</span>
         ),
-      responsive: ["md"],
+      responsive: ["lg"],
     },
     {
       title: "LinkedIn",
@@ -118,7 +167,7 @@ export const CandidatesTable: React.FC<ITableProps> = ({
         ) : (
           <span>N/A</span>
         ),
-      responsive: ["md"],
+      responsive: ["lg"],
     },
     {
       title: "Github",
@@ -142,7 +191,7 @@ export const CandidatesTable: React.FC<ITableProps> = ({
         ) : (
           <span>N/A</span>
         ),
-      responsive: ["md"],
+      responsive: ["lg"],
     },
     {
       title: "Actions",
@@ -158,7 +207,7 @@ export const CandidatesTable: React.FC<ITableProps> = ({
           deleteLoading={deleteCandidateLoading}
         />
       ),
-      responsive: ["md"],
+      responsive: ["lg"],
     },
   ];
 
