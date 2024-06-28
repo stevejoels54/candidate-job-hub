@@ -7,87 +7,179 @@ export const reducers = (state = initialState, action: any) => {
     case actions.GET_CANDIDATES_LOADING:
       return {
         ...state,
-        candidatesLoading: true,
+        candidate: {
+          ...state.candidate,
+          candidatesLoading: true,
+        },
       };
     case actions.GET_CANDIDATES_SUCCESS:
       return {
         ...state,
-        candidatesLoading: false,
-        candidatesSuccess: action.candidates,
+        candidate: {
+          ...state.candidate,
+          candidatesLoading: false,
+          candidatesSuccess: action.candidates,
+        },
       };
     case actions.GET_CANDIDATES_ERROR:
       return {
         ...state,
-        candidatesLoading: false,
-        candidatesError: action.error,
+        candidate: {
+          ...state.candidate,
+          candidatesLoading: false,
+          candidatesError: action.error,
+        },
       };
     case actions.GET_CANDIDATE_LOADING:
       return {
         ...state,
-        candidateLoading: true,
+        candidate: {
+          ...state.candidate,
+          candidateLoading: true,
+        },
       };
     case actions.GET_CANDIDATE_SUCCESS:
       return {
         ...state,
-        candidateLoading: false,
-        candidateSuccess: action.candidate,
+        candidate: {
+          ...state.candidate,
+          candidateLoading: false,
+          candidateSuccess: action.candidate,
+        },
       };
     case actions.GET_CANDIDATE_ERROR:
       return {
         ...state,
-        candidateLoading: false,
-        candidateError: action.error,
+        candidate: {
+          ...state.candidate,
+          candidateLoading: false,
+          candidateError: action.error,
+        },
       };
     case actions.ADD_CANDIDATE_LOADING:
       return {
         ...state,
-        addCandidateLoading: true,
+        candidate: {
+          ...state.candidate,
+          addCandidateLoading: true,
+        },
       };
     case actions.ADD_CANDIDATE_SUCCESS:
       return {
         ...state,
-        addCandidateLoading: false,
-        addCandidateSuccess: action.candidate,
+        candidate: {
+          ...state.candidate,
+          addCandidateLoading: false,
+          addCandidateSuccess: action.candidate,
+          candidatesSuccess: [
+            action.candidate,
+            ...state.candidate.candidatesSuccess,
+          ],
+        },
       };
     case actions.ADD_CANDIDATE_ERROR:
       return {
         ...state,
-        addCandidateLoading: false,
-        addCandidateError: action.error,
+        candidate: {
+          ...state.candidate,
+          addCandidateLoading: false,
+          addCandidateError: action.error,
+        },
       };
     case actions.UPDATE_CANDIDATE_LOADING:
       return {
         ...state,
-        updateCandidateLoading: true,
+        candidate: {
+          ...state.candidate,
+          updateCandidateLoading: true,
+        },
       };
     case actions.UPDATE_CANDIDATE_SUCCESS:
       return {
         ...state,
-        updateCandidateLoading: false,
-        updateCandidateSuccess: action.candidate,
+        candidate: {
+          ...state.candidate,
+          updateCandidateLoading: false,
+          updateCandidateSuccess: action.candidate,
+          candidatesSuccess: state.candidate.candidatesSuccess.map(
+            (candidate) =>
+              candidate.email === action.candidate.email
+                ? action.candidate
+                : candidate
+          ),
+        },
       };
     case actions.UPDATE_CANDIDATE_ERROR:
       return {
         ...state,
-        updateCandidateLoading: false,
-        updateCandidateError: action.error,
+        candidate: {
+          ...state.candidate,
+          updateCandidateLoading: false,
+          updateCandidateError: action.error,
+        },
+      };
+    case actions.UPDATE_CANDIDATE_DATA:
+      return {
+        ...state,
+        candidate: {
+          ...state.candidate,
+          updateCandidateData: action.candidate,
+        },
       };
     case actions.DELETE_CANDIDATE_LOADING:
       return {
         ...state,
-        deleteCandidateLoading: true,
+        candidate: {
+          ...state.candidate,
+          deleteCandidateLoading: true,
+        },
       };
     case actions.DELETE_CANDIDATE_SUCCESS:
       return {
         ...state,
-        deleteCandidateLoading: false,
-        deleteCandidateSuccess: action.candidate,
+        candidate: {
+          ...state.candidate,
+          deleteCandidateLoading: false,
+          deleteCandidateSuccess: action.candidate,
+          candidatesSuccess: state.candidate.candidatesSuccess.filter(
+            (candidate) => candidate.email !== action.email
+          ),
+        },
       };
     case actions.DELETE_CANDIDATE_ERROR:
       return {
         ...state,
-        deleteCandidateLoading: false,
-        deleteCandidateError: action.error,
+        candidate: {
+          ...state.candidate,
+          deleteCandidateLoading: false,
+          deleteCandidateError: action.error,
+        },
+      };
+
+    case actions.ADD_CANDIDATE_MODAL_VISIBLE:
+      return {
+        ...state,
+        appUi: {
+          ...state.appUi,
+          addCandidateModalVisible: !state.appUi.addCandidateModalVisible,
+        },
+      };
+    case actions.UPDATE_CANDIDATE_MODAL_VISIBLE:
+      return {
+        ...state,
+        appUi: {
+          ...state.appUi,
+          updateCandidateModalVisible: !state.appUi.updateCandidateModalVisible,
+        },
+      };
+    case actions.CANDIDATE_DETAILS_MODAL_VISIBLE:
+      return {
+        ...state,
+        appUi: {
+          ...state.appUi,
+          candidateDetailsModalVisible:
+            !state.appUi.candidateDetailsModalVisible,
+        },
       };
     default:
       return state;

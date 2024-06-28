@@ -16,10 +16,16 @@ export const actions = {
   UPDATE_CANDIDATE_LOADING: "UPDATE_CANDIDATE_LOADING",
   UPDATE_CANDIDATE_SUCCESS: "UPDATE_CANDIDATE_SUCCESS",
   UPDATE_CANDIDATE_ERROR: "UPDATE_CANDIDATE_ERROR",
+  UPDATE_CANDIDATE_DATA: "UPDATE_CANDIDATE_DATA",
 
   DELETE_CANDIDATE_LOADING: "DELETE_CANDIDATE_LOADING",
   DELETE_CANDIDATE_SUCCESS: "DELETE_CANDIDATE_SUCCESS",
   DELETE_CANDIDATE_ERROR: "DELETE_CANDIDATE_ERROR",
+
+  // UI actions
+  ADD_CANDIDATE_MODAL_VISIBLE: "ADD_CANDIDATE_MODAL_VISIBLE",
+  UPDATE_CANDIDATE_MODAL_VISIBLE: "UPDATE_CANDIDATE_MODAL_VISIBLE",
+  CANDIDATE_DETAILS_MODAL_VISIBLE: "CANDIDATE_DETAILS_MODAL_VISIBLE",
 
   getCandidates: () => ({
     type: actions.GET_CANDIDATES_LOADING,
@@ -40,8 +46,26 @@ export const actions = {
     candidate,
   }),
 
+  setUpdateCandidateData: (candidate: ICandidate) => ({
+    type: actions.UPDATE_CANDIDATE_DATA,
+    candidate,
+  }),
+
   deleteCandidate: (email: string) => ({
     type: actions.DELETE_CANDIDATE_LOADING,
     email,
+  }),
+
+  // UI actions
+  showAddCandidateModal: () => ({
+    type: actions.ADD_CANDIDATE_MODAL_VISIBLE,
+  }),
+
+  showUpdateCandidateModal: () => ({
+    type: actions.UPDATE_CANDIDATE_MODAL_VISIBLE,
+  }),
+
+  showCandidateDetailsModal: () => ({
+    type: actions.CANDIDATE_DETAILS_MODAL_VISIBLE,
   }),
 };

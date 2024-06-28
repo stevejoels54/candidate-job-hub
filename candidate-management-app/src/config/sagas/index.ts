@@ -61,8 +61,14 @@ function* updateCandidate(action: any) {
       type: actions.UPDATE_CANDIDATE_SUCCESS,
       candidate: response.data,
     });
-  } catch (error) {
-    yield put({ type: actions.UPDATE_CANDIDATE_ERROR, error });
+  } catch (error: any) {
+    yield put({
+      type: actions.UPDATE_CANDIDATE_ERROR,
+      error: {
+        message:
+          error.response.data.error || error.message || "An error occurred",
+      },
+    });
   }
 }
 
@@ -70,7 +76,7 @@ function* updateCandidate(action: any) {
 function* deleteCandidate(action: any) {
   try {
     yield axios.delete(`http://localhost:5000/api/candidates/${action.email}`);
-    yield put({ type: actions.DELETE_CANDIDATE_SUCCESS });
+    yield put({ type: actions.DELETE_CANDIDATE_SUCCESS, email: action.email });
   } catch (error) {
     yield put({ type: actions.DELETE_CANDIDATE_ERROR, error });
   }
