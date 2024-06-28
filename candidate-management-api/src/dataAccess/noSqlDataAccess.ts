@@ -6,12 +6,16 @@ class NoSqlDataAccess {
   async addOrUpdateCandidate(
     candidateData: ICandidate
   ): Promise<{ candidate: ICandidate; created: boolean }> {
+    const existingCandidate = await Candidate.findOne({
+      email: candidateData.email,
+    });
     const candidate = await Candidate.findOneAndUpdate(
       { email: candidateData.email },
       candidateData,
       { new: true, upsert: true }
     );
-    const created = candidate.isNew;
+    // const created = candidate.isNew;
+    const created = !existingCandidate;
     return { candidate: candidate.toObject(), created };
   }
 

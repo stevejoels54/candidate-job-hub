@@ -6,10 +6,11 @@ class SqlDataAccess {
   async addOrUpdateCandidate(
     candidateData: ICandidate
   ): Promise<{ candidate: ICandidate; created: boolean }> {
-    const [candidate, created] = await Candidate.upsert(candidateData as any, {
+    // check if the candidate already exists and return true if created or false if updated
+    const isCreated = !(await this.getCandidateByEmail(candidateData.email));
+    const [candidate] = await Candidate.upsert(candidateData as any, {
       returning: true,
     });
-    const isCreated = created === true ? true : false;
     return { candidate, created: isCreated };
   }
 
