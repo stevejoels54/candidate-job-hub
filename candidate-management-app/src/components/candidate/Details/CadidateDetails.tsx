@@ -1,39 +1,3 @@
-// import React, { useEffect } from "react";
-// import { Button, Modal, Form, Input, Alert, Avatar } from "antd";
-// import { actions } from "../../../config/actions";
-// import { useSelector, useDispatch } from "react-redux";
-// import { IState, ICandidate } from "../../../types";
-// import { isEmpty } from "lodash";
-
-// const CandidateDetails: React.FC = () => {
-//   const dispatch = useDispatch();
-
-//   const handleCancel = () => {
-//     dispatch(actions.showCandidateDetailsModal());
-//   };
-
-//   const { candidateDetailsModalVisible } = useSelector(
-//     (state: IState) => state.appUi
-//   );
-
-//   const { candidateLoading, candidateSuccess } = useSelector(
-//     (state: IState) => state.candidate
-//   );
-
-//   return (
-//     <>
-//       <Modal
-//         title="CANDIDATE DETAILS"
-//         open={candidateDetailsModalVisible}
-//         onCancel={handleCancel}
-//         footer={null}
-//       ></Modal>
-//     </>
-//   );
-// };
-
-// export default CandidateDetails;
-
 import React from "react";
 import { Modal, Alert, Avatar, Typography, Space, Divider } from "antd";
 import { useSelector, useDispatch } from "react-redux";
