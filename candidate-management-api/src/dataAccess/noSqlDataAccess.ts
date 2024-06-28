@@ -22,7 +22,8 @@ class NoSqlDataAccess {
 
   // function to get all candidates
   async getAllCandidates(): Promise<ICandidate[]> {
-    return await Candidate.find();
+    const candidates = await Candidate.find().sort({ _id: -1 });
+    return candidates.map((candidate) => candidate.toObject());
   }
 
   // function to delete a candidate by email and return nothing
