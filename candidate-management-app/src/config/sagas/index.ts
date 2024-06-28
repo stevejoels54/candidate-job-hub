@@ -4,11 +4,13 @@ import { actions } from "../actions";
 import { AxiosResponse } from "axios";
 import axios from "axios";
 
+const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+
 // function to get all candidates
 function* getCandidates() {
   try {
     const response: AxiosResponse = yield axios.get(
-      "http://localhost:5000/api/candidates"
+      `${baseUrl}/api/candidates`
     );
     yield put({
       type: actions.GET_CANDIDATES_SUCCESS,
@@ -23,7 +25,7 @@ function* getCandidates() {
 function* getCandidate(action: any) {
   try {
     const response: AxiosResponse = yield axios.get(
-      `http://localhost:5000/api/candidates/${action.email}`
+      `${baseUrl}/api/candidates/${action.email}`
     );
     yield put({
       type: actions.GET_CANDIDATE_SUCCESS,
@@ -38,7 +40,7 @@ function* getCandidate(action: any) {
 function* addCandidate(action: any) {
   try {
     const response: AxiosResponse = yield axios.post(
-      "http://localhost:5000/api/candidates",
+      `${baseUrl}/api/candidates`,
       action.candidate
     );
     yield put({
@@ -54,7 +56,7 @@ function* addCandidate(action: any) {
 function* updateCandidate(action: any) {
   try {
     const response: AxiosResponse = yield axios.put(
-      "http://localhost:5000/api/candidates",
+      `${baseUrl}/api/candidates`,
       action.candidate
     );
     yield put({
@@ -75,7 +77,7 @@ function* updateCandidate(action: any) {
 // function to delete a candidate
 function* deleteCandidate(action: any) {
   try {
-    yield axios.delete(`http://localhost:5000/api/candidates/${action.email}`);
+    yield axios.delete(`${baseUrl}/${action.email}`);
     yield put({ type: actions.DELETE_CANDIDATE_SUCCESS, email: action.email });
   } catch (error) {
     yield put({ type: actions.DELETE_CANDIDATE_ERROR, error });
