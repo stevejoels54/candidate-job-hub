@@ -1,4 +1,3 @@
-````markdown
 # Candidate Management Backend
 
 This is the backend for the Candidate Management system. It supports both SQL and NoSQL databases and provides APIs to manage candidate information.
@@ -19,7 +18,6 @@ git clone https://github.com/stevejoels54/candidate-job-hub.git
 cd candidate-job-hub
 cd candidate-management-api
 ```
-````
 
 ### 2. Install Dependencies
 
