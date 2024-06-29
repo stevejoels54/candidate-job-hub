@@ -15,7 +15,8 @@ const dialect =
     : process.env.SQL_DATABASE_DIALECT;
 
 const sequelize = new Sequelize(databaseUrl as string, {
-  dialect: dialect as any,
+  dialectModule: require("pg"),
+  // dialect: dialect as any,
   logging: false,
 });
 
