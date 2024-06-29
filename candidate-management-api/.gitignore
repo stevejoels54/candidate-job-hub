@@ -40,5 +40,8 @@ public
 sftp-config.json
 
 # build output
-dist/
-build/
+# dist/
+# build/
+
+# ignore .DS_Store files created by macOS
+.DS_Store
