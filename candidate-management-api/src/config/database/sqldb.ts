@@ -16,7 +16,7 @@ const dialect =
 
 const sequelize = new Sequelize(databaseUrl as string, {
   dialect: dialect as any,
-  logging: env === "test" ? console.log : false,
+  logging: false,
 });
 
 export default sequelize;
