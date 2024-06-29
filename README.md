@@ -2,6 +2,13 @@
 
 Welcome to the **Candidate Job Hub** monorepo. This repository contains the complete codebase for managing candidates and job applications, including both the front-end and back-end components.
 
+## Live URLs
+
+Explore the live versions of the applications, which are deployed on Vercel with continuous integration and continuous deployment (CI/CD) set up to the main branch. This allows for a live preview of the latest changes:
+
+- **Backend API**: [Candidate Management API](https://candidate-management-api.vercel.app/)
+- **Frontend App**: [Candidate Management App](https://candidate-job-hub.vercel.app/)
+
 ## Directory Structure
 
 This monorepo is divided into two main directories:
