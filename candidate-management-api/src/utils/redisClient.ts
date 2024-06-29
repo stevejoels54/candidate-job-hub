@@ -11,7 +11,7 @@ const redisPort = parseInt(process.env.REDIS_PORT || "6379", 10);
 const redisPassword = process.env.REDIS_PASSWORD;
 
 // if env is test or development, use the default redis client else, use the production redis client
-if (env === "production") {
+if (env === "production" || env === "development") {
   var redisClient = createClient({
     password: redisPassword,
     socket: {
