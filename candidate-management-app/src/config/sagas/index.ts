@@ -77,7 +77,7 @@ function* updateCandidate(action: any) {
 // function to delete a candidate
 function* deleteCandidate(action: any) {
   try {
-    yield axios.delete(`${baseUrl}/${action.email}`);
+    yield axios.delete(`${baseUrl}/api/candidates/${action.email}`);
     yield put({ type: actions.DELETE_CANDIDATE_SUCCESS, email: action.email });
   } catch (error) {
     yield put({ type: actions.DELETE_CANDIDATE_ERROR, error });
