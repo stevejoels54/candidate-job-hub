@@ -10,10 +10,6 @@ const logger = (0, winston_1.createLogger)({
     format: combine(colorize(), timestamp({
         format: "YYYY-MM-DD HH:mm:ss",
     }), customFormat),
-    transports: [
-        new winston_1.transports.File({ filename: "logs/error.log", level: "error" }),
-        new winston_1.transports.File({ filename: "logs/combined.log" }),
-    ],
 });
 if (process.env.NODE_ENV !== "production") {
     logger.add(new winston_1.transports.Console({
