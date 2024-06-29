@@ -13,7 +13,7 @@ import { isEmpty } from "lodash";
 const Candidates = () => {
   const dispatch = useDispatch();
 
-  const { candidatesLoading, candidatesSuccess, candidatesError } = useSelector(
+  const { candidatesLoading, candidatesSuccess } = useSelector(
     (state: IState) => state.candidate
   );
 
@@ -33,7 +33,6 @@ const Candidates = () => {
       <AddCandidate />
       <UpdateCandidate />
       <CandidateDetails />
-      {candidatesError && <p>{candidatesError.message}</p>}
       <CandidatesTable data={candidatesSuccess} loarding={candidatesLoading} />
       <FloatButton
         icon={<TbReload />}
