@@ -1,4 +1,3 @@
-````markdown
 # Candidate Management App
 
 This is a React application for managing candidate information. The app uses TypeScript, Ant Design (antd) for UI components, Redux for state management, and Redux Saga middleware for handling side effects such as API calls. Axios is used for making HTTP requests to the server.
@@ -17,7 +16,6 @@ git clone https://github.com/stevejoels54/candidate-job-hub.git
 cd candidate-job-hub
 cd candidate-management-app
 ```
-````
 
 ### 2. Install Dependencies
 
