@@ -15,7 +15,8 @@ const dialect = env === "test"
     ? process.env.SQL_DATABASE_DIALECT_TEST
     : process.env.SQL_DATABASE_DIALECT;
 const sequelize = new sequelize_1.Sequelize(databaseUrl, {
-    dialect: dialect,
+    dialectModule: require("pg"),
+    // dialect: dialect as any,
     logging: false,
 });
 exports.default = sequelize;
