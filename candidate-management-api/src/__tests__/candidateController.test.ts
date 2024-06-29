@@ -73,4 +73,25 @@ describe("Candidate Controller", () => {
   it("should delete a candidate by email", async () => {
     await request(app).delete(`/api/candidates/${candidate.email}`).expect(204);
   });
+
+  // New tests for validation
+  const requiredFields: Array<keyof ICandidate> = [
+    "firstName",
+    "lastName",
+    "email",
+    "comment",
+  ];
+
+  requiredFields.forEach((field) => {
+    it(`should return a validation error if ${field} is missing`, async () => {
+      const invalidCandidate = { ...candidate };
+      delete invalidCandidate[field];
+
+      const response = await request(app)
+        .post("/api/candidates")
+        .send(invalidCandidate)
+        .expect("Content-Type", /json/)
+        .expect(400);
+    });
+  });
 });
