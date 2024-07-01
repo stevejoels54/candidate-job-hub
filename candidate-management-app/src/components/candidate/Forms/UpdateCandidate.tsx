@@ -60,7 +60,7 @@ const UpdateCandidate: React.FC = () => {
         )}
         {!isEmpty(updateCandidateSuccess) && (
           <Alert
-            message="Candidate updateed successfully"
+            message="Candidate updated successfully"
             type="success"
             showIcon
             closable

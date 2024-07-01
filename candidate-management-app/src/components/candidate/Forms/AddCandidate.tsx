@@ -29,7 +29,7 @@ const AddCandidate: React.FC = () => {
   };
 
   useEffect(() => {
-    if (addCandidateSuccess) {
+    if (!isEmpty(addCandidateSuccess)) {
       form.resetFields();
     }
   }, [addCandidateSuccess, dispatch, form]);
