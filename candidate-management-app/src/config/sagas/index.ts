@@ -2,14 +2,14 @@
 import { takeLatest, put, fork } from "@redux-saga/core/effects";
 import { actions } from "../actions";
 import { AxiosResponse } from "axios";
-import axios from "axios";
+import axiosInstance from "../services/axiosSetup";
 
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 // function to get all candidates
 function* getCandidates() {
   try {
-    const response: AxiosResponse = yield axios.get(
+    const response: AxiosResponse = yield axiosInstance.get(
       `${baseUrl}/api/candidates`
     );
     yield put({
@@ -24,7 +24,7 @@ function* getCandidates() {
 // function to get a single candidate
 function* getCandidate(action: any) {
   try {
-    const response: AxiosResponse = yield axios.get(
+    const response: AxiosResponse = yield axiosInstance.get(
       `${baseUrl}/api/candidates/${action.email}`
     );
     yield put({
@@ -39,7 +39,7 @@ function* getCandidate(action: any) {
 // function to add a candidate
 function* addCandidate(action: any) {
   try {
-    const response: AxiosResponse = yield axios.post(
+    const response: AxiosResponse = yield axiosInstance.post(
       `${baseUrl}/api/candidates`,
       action.candidate
     );
@@ -55,7 +55,7 @@ function* addCandidate(action: any) {
 // function to update a candidate
 function* updateCandidate(action: any) {
   try {
-    const response: AxiosResponse = yield axios.put(
+    const response: AxiosResponse = yield axiosInstance.put(
       `${baseUrl}/api/candidates`,
       action.candidate
     );
@@ -66,10 +66,7 @@ function* updateCandidate(action: any) {
   } catch (error: any) {
     yield put({
       type: actions.UPDATE_CANDIDATE_ERROR,
-      error: {
-        message:
-          error.response.data.error || error.message || "An error occurred",
-      },
+      error,
     });
   }
 }
@@ -77,7 +74,7 @@ function* updateCandidate(action: any) {
 // function to delete a candidate
 function* deleteCandidate(action: any) {
   try {
-    yield axios.delete(`${baseUrl}/api/candidates/${action.email}`);
+    yield axiosInstance.delete(`${baseUrl}/api/candidates/${action.email}`);
     yield put({ type: actions.DELETE_CANDIDATE_SUCCESS, email: action.email });
   } catch (error) {
     yield put({ type: actions.DELETE_CANDIDATE_ERROR, error });
