@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
       <li><strong>GET /api/candidates</strong>: Retrieve a list of all candidates.</li>
       <li><strong>POST /api/candidates</strong>: Add a new candidate. Expects a candidate object in the request body.</li>
       <li><strong>GET /api/candidates/:email</strong>: Retrieve the details of a specific candidate by their Email.</li>
-      <li><strong>PUT /api/candidates/:email</strong>: Update the details of a specific candidate by their Email. Expects updated candidate data in the request body.</li>
+      <li><strong>PUT /api/candidates</strong>: Update the details of a specific candidate object in the request body. Expects updated candidate data in the request body.</li>
       <li><strong>DELETE /api/candidates/:email</strong>: Delete a specific candidate by their Email.</li>
     </ul>`);
 });
