@@ -1,5 +1,6 @@
 import { actions } from "../actions";
 import { initialState } from "../initialState";
+import { IError, ICandidate } from "../../types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const reducers = (state = initialState, action: any) => {
@@ -10,6 +11,7 @@ export const reducers = (state = initialState, action: any) => {
         candidate: {
           ...state.candidate,
           candidatesLoading: true,
+          candidatesError: {} as IError,
         },
       };
     case actions.GET_CANDIDATES_SUCCESS:
@@ -36,6 +38,8 @@ export const reducers = (state = initialState, action: any) => {
         candidate: {
           ...state.candidate,
           candidateLoading: true,
+          candidateError: {} as IError,
+          candidateSuccess: {} as ICandidate,
         },
       };
     case actions.GET_CANDIDATE_SUCCESS:
@@ -62,6 +66,8 @@ export const reducers = (state = initialState, action: any) => {
         candidate: {
           ...state.candidate,
           addCandidateLoading: true,
+          addCandidateError: {} as IError,
+          addCandidateSuccess: {} as ICandidate,
         },
       };
     case actions.ADD_CANDIDATE_SUCCESS:
@@ -73,7 +79,10 @@ export const reducers = (state = initialState, action: any) => {
           addCandidateSuccess: action.candidate,
           candidatesSuccess: [
             action.candidate,
-            ...state.candidate.candidatesSuccess,
+            // if email of new candidate is same as existing candidate, update the existing candidate else add the new candidate
+            ...state.candidate.candidatesSuccess.filter(
+              (candidate) => candidate.email !== action.candidate.email
+            ),
           ],
         },
       };
@@ -92,6 +101,8 @@ export const reducers = (state = initialState, action: any) => {
         candidate: {
           ...state.candidate,
           updateCandidateLoading: true,
+          updateCandidateError: {} as IError,
+          updateCandidateSuccess: {} as ICandidate,
         },
       };
     case actions.UPDATE_CANDIDATE_SUCCESS:
@@ -132,6 +143,8 @@ export const reducers = (state = initialState, action: any) => {
         candidate: {
           ...state.candidate,
           deleteCandidateLoading: true,
+          deleteCandidateError: {} as IError,
+          deleteCandidateSuccess: {} as ICandidate,
         },
       };
     case actions.DELETE_CANDIDATE_SUCCESS:
@@ -179,6 +192,33 @@ export const reducers = (state = initialState, action: any) => {
           ...state.appUi,
           candidateDetailsModalVisible:
             !state.appUi.candidateDetailsModalVisible,
+        },
+      };
+    case actions.SERVER_LOADING:
+      return {
+        ...state,
+        server: {
+          ...state.server,
+          serverLoading: true,
+          serverError: {} as IError,
+        },
+      };
+    case actions.SERVER_SUCCESS:
+      return {
+        ...state,
+        server: {
+          ...state.server,
+          serverLoading: false,
+          serverSuccess: action.message,
+        },
+      };
+    case actions.SERVER_ERROR:
+      return {
+        ...state,
+        server: {
+          ...state.server,
+          serverLoading: false,
+          serverError: action.error,
         },
       };
     default:

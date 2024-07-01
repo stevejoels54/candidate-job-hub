@@ -29,4 +29,9 @@ export const initialState: IState = {
     updateCandidateModalVisible: false,
     candidateDetailsModalVisible: false,
   },
+  server: {
+    serverLoading: false,
+    serverSuccess: "",
+    serverError: {} as IError,
+  },
 };

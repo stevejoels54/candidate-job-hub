@@ -1,4 +1,4 @@
-import { ICandidate } from "../../types";
+import { ICandidate, IError } from "../../types";
 
 export const actions = {
   GET_CANDIDATES_LOADING: "GET_CANDIDATES_LOADING",
@@ -26,6 +26,11 @@ export const actions = {
   ADD_CANDIDATE_MODAL_VISIBLE: "ADD_CANDIDATE_MODAL_VISIBLE",
   UPDATE_CANDIDATE_MODAL_VISIBLE: "UPDATE_CANDIDATE_MODAL_VISIBLE",
   CANDIDATE_DETAILS_MODAL_VISIBLE: "CANDIDATE_DETAILS_MODAL_VISIBLE",
+
+  // service actions
+  SERVER_LOADING: "SERVER_LOADING",
+  SERVER_ERROR: "SERVER_ERROR",
+  SERVER_SUCCESS: "SERVER_SUCCESS",
 
   getCandidates: () => ({
     type: actions.GET_CANDIDATES_LOADING,
@@ -67,5 +72,20 @@ export const actions = {
 
   showCandidateDetailsModal: () => ({
     type: actions.CANDIDATE_DETAILS_MODAL_VISIBLE,
+  }),
+
+  // service actions
+  serverLoading: () => ({
+    type: actions.SERVER_LOADING,
+  }),
+
+  serverError: (error: IError) => ({
+    type: actions.SERVER_ERROR,
+    error,
+  }),
+
+  serverSuccess: (message: string) => ({
+    type: actions.SERVER_SUCCESS,
+    message,
   }),
 };

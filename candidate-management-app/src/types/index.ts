@@ -46,4 +46,10 @@ export interface IState {
     updateCandidateModalVisible: boolean;
     candidateDetailsModalVisible: boolean;
   };
+
+  server: {
+    serverLoading: boolean;
+    serverSuccess: string;
+    serverError: IError;
+  };
 }
