@@ -14,7 +14,7 @@ describe("Candidate Controller", () => {
       firstName: "John",
       lastName: "Doe",
       email: "john.doe@example.com",
-      phoneNumber: "123-456-7890",
+      phoneNumber: "1234567890",
       callInterval: "9AM-5PM",
       linkedin: "https://www.linkedin.com/in/johndoe",
       github: "https://github.com/johndoe",
